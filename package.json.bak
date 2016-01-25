@@ -1,0 +1,13 @@
+{
+  "name": "node-red-contrib-reddit",
+  "version": "0.0.06",
+  "description": "node-red nodes for interacting with reddit",
+  "author": "michael-f",
+  "license": "ISC",
+  "keywords" : ["node-red", "reddit"],
+  "node-red" : {
+    "nodes" : {
+        "reddit login" : "login/login.js"
+    }
+  }
+}

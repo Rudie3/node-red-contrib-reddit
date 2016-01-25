@@ -1,0 +1,137 @@
+<script type="text/javascript">
+    RED.nodes.registerType('reddit-post-to-sub',{
+        category: 'reddit',
+        paletteLabel: 'reddit post to sub',
+        color: '#CEE3F8',
+        defaults: {
+            name : {value:"reddit post to sub"},
+            nodeormsg : {value:""},
+            title : {value:""},
+            post_type : {value:""},
+            post : {value:""},
+            sub : {value:""},
+            link : {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "reddit-a.png",
+        label: function() {
+            return this.name||"reddit-post-to-sub";
+        },
+        oneditprepare: function(){
+            if (($("#node-input-nodeormsg").val() === "node")) {
+                document.getElementById('ifnode').style.display = 'block';
+            }
+            if (($('#node-input-post_type').val() === 'link')) {
+                document.getElementById('iflink').style.display = 'block';
+                document.getElementById('iftext').style.display = 'none';
+            }
+            if (($('#node-input-post_type').val() === 'self')) {
+                document.getElementById('iftext').style.display = 'block';
+                document.getElementById('iflink').style.display = 'none';
+            }
+
+        }
+
+    });
+
+</script>
+
+<script type="text/javascript">
+
+function nodeClicked() {
+    document.getElementById('ifnode').style.display = 'block';
+}
+function msgClicked() {
+    document.getElementById('ifnode').style.display = 'none';
+}
+function linkClicked() {
+    document.getElementById('iflink').style.display = 'block';
+    document.getElementById('iftext').style.display = 'none';
+}
+function textClicked() {
+    document.getElementById('iflink').style.display = 'none';
+    document.getElementById('iftext').style.display = 'block';
+}
+
+</script>
+
+<script type="text/x-red" data-template-name="reddit-post-to-sub">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <p>
+    <div class="form-row">
+        <label for="node-input-nodeormsg"><i class="icon-cog"></i> make post in </label>
+            <select type="text" id="node-input-nodeormsg">
+                <option onclick="javascript:msgClicked();" value="msg">msg.post object</option>
+                <option onclick="javascript:nodeClicked();" value="node">node editor</option>
+            </select>
+    </div>
+    </p>
+    
+    <div id="ifnode" style="display:none">
+
+    <p><i class="icon-cog"></i> link type</p>
+    <div class="form-row">
+        <label for="node-input-post_type"> </label>
+            <select type="text" id="node-input-post_type">
+                <option onclick="javascript:linkClicked();" value="link">link</option>
+                <option onclick="javascript:textClicked();" value="self">self</option>
+            </select>
+    </div>
+
+
+
+    <br>
+
+    <div class="form-row">
+        <label for="node-input-sub"><i class="icon-book"></i> subreddit</label>
+        <input type="text" id="node-input-sub" placeholder="sub">
+    </div>
+
+    <div class="form-row">
+        <label for"node-input-title"><i class="icon-pencil"></i> title</label>
+        <input type="text" id="node-input-title" placeholder="title">
+    </div>
+
+    <div class="form-row" id="iflink" style="display:none;">
+        <label for"node-input-link"><i class="icon-globe"></i> link</label>
+        <input type="text" id="node-input-link" placeholder="link">
+    </div>
+
+    <div class="form-row" id="iftext" style="display:none;">
+        <label for="node-input-post"><i class="icon-file"></i> post text</label>
+            <input type="text" id="node-input-post" placeholder="text of post">
+    </div>
+
+    </div>
+
+
+</script>
+
+<script type="text/x-red" data-help-name="reddit-post-to-sub">
+    <p>a node for making a submission to reddit.</p>
+    <p>
+    set the post details in the node editor or select <code>msg.post</code> to choose setting post details in the msg object.
+    </p>
+    <p>msg.post object parameters</p>
+    <p>
+
+    only required if <b>'msg.post object'</b> was selected in the node edit dialog.
+
+        <ul><li><code>msg.post.post_type</code></li>
+            can be 'link' or 'self'
+            <li><code>msg.post.title</code></li>
+            the title of the post
+            <li><code>msg.post.sub</code></li>
+            the subreddit to post to
+            <li><code>msg.post.link</code></li>
+            the link to share - required if <b>post_type</b> is 'link'
+            <li><code>msg.post.text</code></li>
+            the text of a self post - required if <b>post_type</b> is 'self'
+        </ul>
+    </p>
+</script>

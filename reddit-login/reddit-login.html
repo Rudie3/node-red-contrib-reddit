@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    RED.nodes.registerType('reddit-login-node',{
+        category: 'reddit',
+        paletteLabel: 'reddit login',
+        color: '#CEE3F8',
+        defaults: {
+            name : {value:"reddit login"},
+            uname : {value:""},
+            upass : {value:""},
+            app_name : {value:""},
+            cid : {value:""},
+            secret : {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "reddit-a.png",
+        label: function() {
+            return this.name||"reddit-login-node";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="reddit-login-node">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> node name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <p> user details</p>
+    <div class="form-row">
+        <label for="node-input-uname"><i class="icon-user"></i> username </label>
+        <input type="text" id="node-input-uname" placeholder="username">
+    </div>
+    <div class="form-row">
+        <label for="node-input-upass"><i class="icon-lock"></i> password </label>
+        <input type="password" id="node-input-upass" placeholder="password">
+    </div>
+    <p> app details (from <a href="https://www.reddit.com/prefs/apps/" target="_blank">reddit.com/prefs/apps/</a> )</p>
+    <div class="form-row">
+        <label for="node-input-app_name"><i class="icon-tag"></i> app name </label>
+        <input type="text" id="node-input-app_name" placeholder="app name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-cid"><i class="icon-cog"></i> client ID </label>
+        <input type="text" id="node-input-cid" placeholder="client ID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-secret"><i class="icon-cog"></i> secret </label>
+        <input type="text" id="node-input-secret" placeholder="secret">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="reddit-login-node">
+    <p>a node to log in to reddit.</p>
+    <p>given a set of credentials, this node logs in to reddit when it receives a msg object.</p>
+    <p>on successful login, the node returns the original msg object it recieved.</p>
+    <p><b>note:</b> apart from the username and password, credentials can be found at <a href="https://www.reddit.com/prefs/apps/" target="_blank">reddit.com/prefs/apps/</a> after creating an app.</p>
+    <p><b>note:</b> the reddit logged in session lasts one hour, so any automation will have to log in again every 60 minutes.</p>
+</script>
