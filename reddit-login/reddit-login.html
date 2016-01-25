@@ -1,10 +1,10 @@
 <script type="text/javascript">
     RED.nodes.registerType('reddit-login-node',{
         category: 'reddit',
-        paletteLabel: 'reddit login',
+        paletteLabel: 'login',
         color: '#CEE3F8',
         defaults: {
-            name : {value:"reddit login"},
+            name : {value:"login"},
             uname : {value:""},
             upass : {value:""},
             app_name : {value:""},
@@ -55,4 +55,5 @@
     <p>on successful login, the node returns the original msg object it recieved.</p>
     <p><b>note:</b> apart from the username and password, credentials can be found at <a href="https://www.reddit.com/prefs/apps/" target="_blank">reddit.com/prefs/apps/</a> after creating an app.</p>
     <p><b>note:</b> the reddit logged in session lasts one hour, so any automation will have to log in again every 60 minutes.</p>
+    <p>For more help and ideas visit <a href="crazy-codes.com/node-red-stuff">crazy-codes.com/node-red-stuff</a></p>
 </script>

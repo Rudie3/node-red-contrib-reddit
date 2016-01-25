@@ -1,0 +1,23 @@
+{
+  "name": "node-red-contrib-reddit",
+  "version": "0.0.10",
+  "description": "node-red nodes for interacting with reddit",
+  "author": "michael-f",
+  "license": "Apache-2.0",
+  "keywords" : ["node-red", "reddit", "bot"],
+  "node-red" : {
+    "nodes" : {
+      "reddit login" : "reddit-login/reddit-login.js",
+      "reddit post to sub" : "reddit-post-to-sub/reddit-post-to-sub.js"
+    }
+  },
+  "author": {
+    "name": "Michael Farquhar",
+    "email": "m.farquhar1989@gmail.com",
+    "url": "http://crazy-codes.com/node-red-stuff/"
+  },
+  "dependencies" : {
+    "request" : "*",
+    "raw.js" : "*"
+  }
+}
