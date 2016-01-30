@@ -83,8 +83,6 @@ function textClicked() {
             </select>
     </div>
 
-
-
     <br>
 
     <div class="form-row">
@@ -113,14 +111,9 @@ function textClicked() {
 </script>
 
 <script type="text/x-red" data-help-name="reddit-post-to-sub">
-    <p>a node for making a submission to reddit.</p>
-    <p>
-    set the post details in the node editor or select <code>msg.post</code> to choose setting post details in the msg object.
-    </p>
-    <p>msg.post object parameters</p>
-    <p>
-
-    only required if <b>'msg.post object'</b> was selected in the node edit dialog.
+    <p>A node for making dynamic submissions to reddit.</p>
+    <p>Set the post details in the node editor or select <b>msg.post</b> to choose setting post details in the msg object.</p>
+    <p>msg.post object parameters, required if 'msg.post object' was selected in the node edit dialog.
 
         <ul><li><code>msg.post.post_type</code></li>
             can be 'link' or 'self'
@@ -134,5 +127,6 @@ function textClicked() {
             the text of a self post - required if <b>post_type</b> is 'self'
         </ul>
     </p>
+    <hr/>
     <p>For more help and ideas visit <a href="crazy-codes.com/node-red-stuff">crazy-codes.com/node-red-stuff</a></p>
 </script>

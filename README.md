@@ -24,7 +24,7 @@ Log in with your reddit credentials and the details of a reddit script type app 
 
 ---
 
-## Creating a reddit script type app
+## Creating a script type app on reddit
 
 To get the log in credentials, you have to make an app for the account you want to control.
 

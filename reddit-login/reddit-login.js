@@ -9,6 +9,7 @@ module.exports = function(RED) {
 
 		var node = this;
 
+		// if the bearer token is already set, assume we're logged in
 		if (typeof bearer_token != 'undefined') {
 			node.status({fill:"green",shape:"dot",text:"logged in"});
 		} else {
@@ -50,7 +51,8 @@ module.exports = function(RED) {
 				}
 			});
 		});
-	
+
+	// this is fucked, fix this.
 	this.on("close", function() {
 		// tidy up
     });

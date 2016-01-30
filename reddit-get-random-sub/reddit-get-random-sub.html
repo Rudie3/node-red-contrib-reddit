@@ -1,0 +1,30 @@
+<script type="text/javascript">
+    RED.nodes.registerType('reddit-get-random-sub',{
+        category: 'reddit',
+        paletteLabel: 'get random sub',
+        color: '#CEE3F8',
+        defaults: {
+            name : {value:"get random sub"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "reddit-a.png",
+        label: function() {
+            return this.name||"reddit-get-random-sub";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="reddit-get-random-sub">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> node name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="reddit-get-random-sub">
+    <p>a node to get a random subreddit from reddit.</p>
+    <p>returns a random subreddit as <b>msg.randsub</b> returns the whole link, as in http://www.reddit.com/r/[SUBREDDIT]</p>
+    <hr/>
+    <p>For more help and ideas visit <a href="crazy-codes.com/node-red-stuff">crazy-codes.com/node-red-stuff</a></p>
+</script>

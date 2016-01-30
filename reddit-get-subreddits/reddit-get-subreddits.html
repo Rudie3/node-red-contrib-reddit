@@ -1,0 +1,75 @@
+<script type="text/javascript">
+    RED.nodes.registerType('reddit-get-subreddits',{
+        category: 'reddit',
+        paletteLabel: 'get subreddits',
+        color: '#CEE3F8',
+        defaults: {
+            name : {value:"get subreddits"},
+            keywords : {value:""},
+            topicorname : {value:""},
+            opts : {value:"arr"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "reddit-a.png",
+        label: function() {
+            return this.name||"reddit-get-subreddits";
+        },
+        oneditprepare: function(){
+            if (($("#node-input-topicorname").val() != "")) {
+                document.getElementById('kw').style.display = 'block';
+                document.getElementById('opts').style.display = 'block';
+            }
+        }
+    });
+</script>
+
+<script type="text/javascript">
+
+function optClicked() {
+    document.getElementById('kw').style.display = 'block';
+    document.getElementById('opts').style.display = 'block';
+}
+
+</script>
+
+<script type="text/x-red" data-template-name="reddit-get-subreddits">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> node name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <p>search criteria</p>
+
+    <div class="form-row">
+    <label for="node-input-topicorname"><i class="icon-cog"></i> search by</label>
+        <select type="text" id="node-input-topicorname">
+            <option onclick="javascript:optClicked();" value="topic">topic</option>
+            <option onclick="javascript:optClicked();" value="name">name</option>
+        </select>
+    </div>
+
+    <div class="form-row" id="kw" style="display:none;">
+        <label for="node-input-keywords"><i class="icon-tag"></i> keywords</label>
+        <input type="text" id="node-input-keywords" placeholder="keywords" maxlength="50">
+    </div>
+
+    <div class="form-row" id="opts" style="display:none;">
+        <label for="node-input-opts"><i class="icon-tag"></i> output list as</label>
+            <select type="text" id="node-input-opts">
+                <option value="arr">one array of results</option>
+                <option value="msgs">one message per result</option>
+            </select>
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="reddit-get-subreddits">
+    <p>A node for searching reddit for subreddits. Returns a list of subreddits based on given keywords. Search by topic or by title.</p>
+
+    <p>Return the list of subreddits as an array of names (<b>msg.allnames</b>) in one message, or one subreddit per message (<b>msg.name</b>).</p>
+
+    <p>Does not require login.</p>
+    <hr/>
+    <p>For more help and ideas visit <a href="crazy-codes.com/node-red-stuff">crazy-codes.com/node-red-stuff</a></p>
+</script>
